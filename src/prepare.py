@@ -7,6 +7,7 @@ from torchvision.datasets import CIFAR10
 RAW = Path("data/raw")
 CACHE = Path(".cache/cifar10")  # torchvision download cache (git-ignored, not tracked)
 
+# a comment line: 26L-9010
 
 def main():
     RAW.mkdir(parents=True, exist_ok=True)
