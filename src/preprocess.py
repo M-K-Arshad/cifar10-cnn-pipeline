@@ -37,7 +37,7 @@ def main():
     def normalize(t):
         return ((t - mean) / std).half()  # float16 halves storage on the DVC remote
     # --- END NORMALIZATION ---
-
+    # Part A5 Comment: The normalization function is defined to standardize the input tensor `t` using the mean and standard deviation computed from the training set. The result is converted to half-precision (float16) to reduce storage requirements when saving the processed data. This is particularly useful for large datasets, as it helps save space on disk and can speed up data loading during training.
     splits = {"train": (x[tr_idx], y[tr_idx]),
               "val": (x[val_idx], y[val_idx]),
               "test": (x_test, y_test)}
