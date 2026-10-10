@@ -1,0 +1,20 @@
+# virtual environments
+venv/
+.venv/
+env/
+
+# python
+__pycache__/
+*.pyc
+
+# DVC local cache and credentials (never commit)
+.dvc/cache
+.dvc/tmp
+.dvc/config.local
+
+# large artifacts handled by DVC
+*.pth
+*.h5
+
+# torchvision download cache
+.cache/
