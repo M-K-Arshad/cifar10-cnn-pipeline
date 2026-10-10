@@ -1,2 +1,4 @@
+[core]
+    remote = origin
 ['remote "origin"']
     url = https://dagshub.com/M-K-Arshad/cifar10-cnn-pipeline.dvc
