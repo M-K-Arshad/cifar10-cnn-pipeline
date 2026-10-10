@@ -1,0 +1,8 @@
+torch
+torchvision
+dvc
+dagshub
+pyyaml
+scikit-learn
+matplotlib
+numpy
