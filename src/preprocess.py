@@ -34,8 +34,16 @@ def main():
     mean = x[tr_idx].mean(dim=(0, 2, 3), keepdim=True)
     std = x[tr_idx].std(dim=(0, 2, 3), keepdim=True)
 
-    def normalize(t):
-        return ((t - mean) / std).half()
+    # --- NORMALIZATION (reconciled) ---
+    if p["normalization"] == "minmax":
+        def normalize(t):
+            return (t * 2 - 1).half()
+    else:
+        mean = torch.tensor([0.4914, 0.4822, 0.4465]).view(1, 3, 1, 1)
+        std = torch.tensor([0.2470, 0.2435, 0.2616]).view(1, 3, 1, 1)
+
+        def normalize(t):
+            return ((t - mean) / std).half()
     # --- END NORMALIZATION ---
     # Part A5 Comment: The normalization function is defined to standardize the input tensor `t` using the mean and standard deviation computed from the training set. The result is converted to half-precision (float16) to reduce storage requirements when saving the processed data. This is particularly useful for large datasets, as it helps save space on disk and can speed up data loading during training.
     splits = {"train": (x[tr_idx], y[tr_idx]),

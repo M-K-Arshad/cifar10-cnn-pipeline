@@ -23,17 +23,18 @@ stages:
       nfiles: 2
     - path: src/preprocess.py
       hash: md5
-      md5: 54e5ce316b1e4b7a9fb78648f0d37241
-      size: 2076
+      md5: 81d5634de2d88d0ee54140357ce0fe6c
+      size: 2388
     params:
       params.yaml:
         preprocess.image_size: 32
+        preprocess.normalization: standard
         preprocess.seed: 42
         preprocess.val_size: 0.1
     outs:
     - path: data/processed
       hash: md5
-      md5: b28326bbcf5d50acd73666ce1422c284.dir
+      md5: 444d4836e9774fe5696d7a2aa33494e9.dir
       size: 369125223
       nfiles: 3
   train:
@@ -41,13 +42,13 @@ stages:
     deps:
     - path: data/processed
       hash: md5
-      md5: b28326bbcf5d50acd73666ce1422c284.dir
+      md5: 444d4836e9774fe5696d7a2aa33494e9.dir
       size: 369125223
       nfiles: 3
     - path: src/train.py
       hash: md5
-      md5: 603f7024dbb33618095b78b246090518
-      size: 4106
+      md5: 1ef483b6c77d3511e1e9dbd84a467de1
+      size: 4221
     params:
       params.yaml:
         train.batch_size: 128
@@ -59,30 +60,30 @@ stages:
     outs:
     - path: models
       hash: md5
-      md5: e051046a5a327834f8803b1d39e907fa.dir
-      size: 5760047
+      md5: d1c12ce944e9df74991998f320ac845a.dir
+      size: 5760044
       nfiles: 2
   evaluate:
     cmd: python src/evaluate.py
     deps:
     - path: data/processed
       hash: md5
-      md5: b28326bbcf5d50acd73666ce1422c284.dir
+      md5: 444d4836e9774fe5696d7a2aa33494e9.dir
       size: 369125223
       nfiles: 3
     - path: models
       hash: md5
-      md5: e051046a5a327834f8803b1d39e907fa.dir
-      size: 5760047
+      md5: d1c12ce944e9df74991998f320ac845a.dir
+      size: 5760044
       nfiles: 2
     - path: src/evaluate.py
       hash: md5
-      md5: b08d31a135d71235cac0bb4ceaeaad19
-      size: 1849
+      md5: cfa0dacf8da3a98a79f1f4f0e7ca3732
+      size: 1901
     - path: src/train.py
       hash: md5
-      md5: 603f7024dbb33618095b78b246090518
-      size: 4106
+      md5: 1ef483b6c77d3511e1e9dbd84a467de1
+      size: 4221
     params:
       params.yaml:
         train.dropout_rate: 0.4
@@ -90,9 +91,9 @@ stages:
     outs:
     - path: confusion_matrix.png
       hash: md5
-      md5: 2c061cf3e93dd6aa7dc70df57989e8be
-      size: 77659
+      md5: 00552170eb22c83bb19402c005c41001
+      size: 78493
     - path: metrics.json
       hash: md5
-      md5: 36f6d5f00b00ea4f74e74be6f08a891f
-      size: 54
+      md5: cfbe9a8660a1021566b98f4b0b1f20eb
+      size: 55

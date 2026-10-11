@@ -2,6 +2,7 @@ preprocess:
   val_size: 0.1
   seed: 42
   image_size: 32
+  normalization: standard
 
 train:
   num_filters: 48

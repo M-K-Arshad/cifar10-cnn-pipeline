@@ -15,6 +15,7 @@ stages:
       - preprocess.val_size
       - preprocess.seed
       - preprocess.image_size
+      - preprocess.normalization
     outs:
       - data/processed
 
