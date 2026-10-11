@@ -4,7 +4,7 @@ preprocess:
   image_size: 32
 
 train:
-  num_filters: 32
+  num_filters: 48
   dropout_rate: 0.4
   learning_rate: 0.001
   epochs: 15
